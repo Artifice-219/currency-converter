@@ -24,6 +24,6 @@ def convert(req):
     if response.status_code == 200 :
         data = response.json()
         # log the response data first
-        return render(req, 'result.html', {'data' : data})
+        return render(req, 'result.html', {'data' : data, 'amount' : amount})
     else :
         return JsonResponse({'error': 'An error occurred while fetching data from the API.'}, status=500)
