@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Conversion Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-2xl font-bold text-center text-blue-600 mb-6">Currency Conversion Result</h1>
+
+        <!-- Conversion Result Section -->
+        <div class="space-y-4">
+            <div class="text-lg">
+                <strong class="text-gray-700">From Currency: {{data.base_code}}</strong> <span id="from-currency" class="text-blue-500"></span>
+            </div>
+            <div class="text-lg">
+                <strong class="text-gray-700">To Currency: {{data.target_code}} </strong> <span id="to-currency" class="text-blue-500"></span>
+            </div>
+            <div class="text-lg">
+                <strong class="text-gray-700">Amount:</strong> <span id="amount" class="text-blue-500"></span>
+            </div>
+            <div class="text-lg">
+                <strong class="text-gray-700">Conversion Rate: {{data.conversion_rate}}</strong> <span id="conversion-rate" class="text-blue-500"></span>
+            </div>
+            <div class="text-lg">
+                <strong class="text-gray-700">Converted Amount: {{data.conversion_result}} </strong> <span id="converted-amount" class="text-blue-500"></span>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-6 text-center">
+            <a href="{% url 'index' %}" class="text-blue-600 hover:text-blue-800">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

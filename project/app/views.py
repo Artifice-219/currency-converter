@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
 import requests  
@@ -24,8 +24,6 @@ def convert(req):
     if response.status_code == 200 :
         data = response.json()
         # log the response data first
-        return JsonResponse(data) 
-        print(data)
+        return render(req, 'result.html', {'data' : data})
     else :
         return JsonResponse({'error': 'An error occurred while fetching data from the API.'}, status=500)
-        print(f'An error occured {response.status_code}')
