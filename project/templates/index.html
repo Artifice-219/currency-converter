@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-center mb-6">Currency Converter</h1>
+        <form method="post" class="space-y-4">
+            {%csrf_token%}
+            <!-- Amount Input -->
+            <div>
+                <label for="amount" class="block text-sm font-medium text-gray-700">Enter Amount</label>
+                <input 
+                    type="number" 
+                    id="amount" 
+                    name="amount" 
+                    placeholder="Enter amount" 
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <!-- From Currency Selection -->
+            <div>
+                <label for="from_currency" class="block text-sm font-medium text-gray-700">From Currency</label>
+                <select 
+                    id="from_currency" 
+                    name="from_currency" 
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="USD">USD - US Dollar</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - British Pound</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="INR">INR - Indian Rupee</option>
+                </select>
+            </div>
+
+            <!-- To Currency Selection -->
+            <div>
+                <label for="to_currency" class="block text-sm font-medium text-gray-700">To Currency</label>
+                <select 
+                    id="to_currency" 
+                    name="to_currency" 
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="USD">USD - US Dollar</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - British Pound</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="INR">INR - Indian Rupee</option>
+                </select>
+            </div>
+
+            <!-- Convert Button -->
+            <div>
+                <button 
+                    type="submit" 
+                    class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Convert
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
