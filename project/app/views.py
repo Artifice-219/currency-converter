@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-import json
-import requests  
+import json, os, requests
 
 # Create your views here.
 def index(req):
@@ -9,7 +8,7 @@ def index(req):
 
 def convert(req):
     # send a request to the api from here
-    api_key = 'a3d85aa6422242c1da19cc85'
+    api_key = os.getenv('API_KEY')
     if req.method == 'POST':
         amount = req.POST.get('amount')
         from_currency = req.POST.get('from_currency')
