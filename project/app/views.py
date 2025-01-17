@@ -1,5 +1,31 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+import json
+import requests  
 
 # Create your views here.
 def index(req):
     return render(req, 'index.html')
+
+def convert(req):
+    # send a request to the api from here
+    api_key = 'a3d85aa6422242c1da19cc85'
+    if req.method == 'POST':
+        amount = req.POST.get('amount')
+        from_currency = req.POST.get('from_currency')
+        to_currency = req.POST.get('to_currency')
+    # sample url form the api that suppost pair conversion 
+    # GET https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair/EUR/GBP/AMOUNT
+    api_url = f'https://v6.exchangerate-api.com/v6/{api_key}/pair/{from_currency}/{to_currency}/{amount}'
+
+    # get request to the api end point
+    response = requests.get(api_url)
+
+    if response.status_code == 200 :
+        data = response.json()
+        # log the response data first
+        return JsonResponse(data) 
+        print(data)
+    else :
+        return JsonResponse({'error': 'An error occurred while fetching data from the API.'}, status=500)
+        print(f'An error occured {response.status_code}')
